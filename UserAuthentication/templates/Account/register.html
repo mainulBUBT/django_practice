@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Registration Page {% endblock %}
+
+
+{% block body %}
+{% if registered %}
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <strong>Congratulations!</strong> Your acount created successfully.
+</div>
+{% else %}
+<form method="post" style="padding-top: 10px;" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{userForm.as_p}}
+    {{userInfoForm.as_p}}
+    <input type="submit" class="btn btn-success btn-sm">
+</form>
+{% endif %}
+{% endblock %}
