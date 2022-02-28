@@ -2,5 +2,20 @@
 {% block title %} Login Page {% endblock %}
 
 {% block body %}
-<h1>Home Page</h1>
+
+{% if user.is_authenticated %}
+    <h3 class="mt-5">Hi {{ user_info.username }}</h3>
+    <p>Email: {{ user_info.email }}</p>
+    <p><a href="{{user_more_info.facebook_link}}">Facebook Link</a></p>
+    <img src="/media/{{ user_more_info.profile_pic }}" alt="">
+{% else %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    You're not logged in
+</div>
+{% endif %}
+
 {% endblock %}
