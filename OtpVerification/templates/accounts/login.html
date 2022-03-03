@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+
+{% block body %}
+<div class="global-container">
+    <div class="card login-form">
+        <div class="card-body">
+            <h3 class="card-title text-center">Login to Dashboard</h3>
+            <div class="card-text">
+                {% if messages %}
+               
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.extra_tags }} alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        {{message}}
+                    </div>
+                    {% endfor %}
+               
+                {% endif %}
+                <form method="POST">
+                    <!-- to error: add class "has-danger" -->
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" name= "username" class="form-control form-control-sm" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
+                        <input type="password" class="form-control form-control-sm" id="exampleInputPassword1" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+
+                    <div class="sign-up">
+                        Don't have an account? <a href="{% url 'accounts:register' %}">Create One</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
