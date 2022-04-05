@@ -4,7 +4,7 @@
 {% block body %}
 
 {% if user.is_authenticated %}
-    <h3 class="mt-5">Hi {{ user_info.username }}</h3>
+    <h3 class="mt-5">Hi, {{ user_info.username }}</h3>
     <p>Email: {{ user_info.email }}</p>
     <p><a href="{{user_more_info.facebook_link}}">Facebook Link</a></p>
     <img src="/media/{{ user_more_info.profile_pic }}" alt="">
